@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ECommerce.Infrastructure.Data.Migrations
+namespace ECommerce.Infrastructure.Data.migrations
 {
     /// <inheritdoc />
     public partial class Initialcommit : Migration

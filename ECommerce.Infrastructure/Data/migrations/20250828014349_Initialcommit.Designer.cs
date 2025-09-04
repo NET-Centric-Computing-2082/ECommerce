@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ECommerce.Infrastructure.Data.Migrations
+namespace ECommerce.Infrastructure.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250827151026_Initialcommit")]
+    [Migration("20250828014349_Initialcommit")]
     partial class Initialcommit
     {
         /// <inheritdoc />
