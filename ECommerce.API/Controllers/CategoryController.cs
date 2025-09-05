@@ -35,7 +35,34 @@ namespace ECommerce.API.Controllers
             var category = _mapper.Map<Category>(categoryDto);
             var createdCategory = await _categoryRepository.AddAsync(category);
             return Ok(_mapper.Map<CategoryDTO>(createdCategory));
-            
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _categoryRepository.DeleteAsync(id);
+            return NoContent();
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CategoryDTO categoryDTO)
+        {
+            if(id != categoryDTO.Id)
+            {
+                return BadRequest();
+            }
+            var category = _mapper.Map<Category>(categoryDTO);
+            await _categoryRepository.UpdateAsync(category);
+            return NoContent();
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var category = await _categoryRepository.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            var categoryDto = _mapper.Map<CategoryDTO>(category);
+            return Ok(categoryDto);
         }
     }
 }

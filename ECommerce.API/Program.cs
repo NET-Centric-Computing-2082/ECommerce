@@ -16,6 +16,9 @@ builder.Services.AddSwaggerGen();
 //Register Automapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+//Register Repositories
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 var connectingString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectingString));
